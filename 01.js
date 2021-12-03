@@ -13,9 +13,17 @@ const count1 = input.reduce((data, number) => {
 console.log(count1)
 
 console.log('Star 2')
+const sumOfLastThree = (input, index) => {
+    if (index > 1) {
+        return input.slice(index - 2, index + 1).reduce((sum, number) => {
+            return sum + number
+        }, 0)
+    }
+    return null
+}
 const count2 = input.reduce((count, number, index) => {
     if (index >= 3) {
-        if (input[index - 3] + input[index - 2] + input[index - 1] < input[index - 2] + input[index - 1] + input[index]) {
+        if (sumOfLastThree(input, index - 1) < sumOfLastThree(input, index)) {
             count++
         }
     }
